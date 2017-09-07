@@ -11,7 +11,6 @@ public class CreateJiraIssueTest {
 	@Test
 	public void testCreateJiraIssue() {
 		
-		
 		String projectKey = "XYZ";
 		String issueSummary = "Issue 1";
 		String issueDescription = "First created issue";

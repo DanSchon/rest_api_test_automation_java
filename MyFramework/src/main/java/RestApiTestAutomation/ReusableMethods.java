@@ -29,5 +29,26 @@ public class ReusableMethods {
 		String sessionID = js.get("session.value");
 		return sessionID;
 	}
+	
+	public static String generateJiraIssueId() {
+		String projectKey = "XYZ";
+		String issueSummary = "Jira Issue";
+		String issueDescription = "A jira issue";
+		String issueType = "Bug";
+		
+		RestAssured.baseURI = ResourcePaths.hostUrl;
+		Response res = 
+			given()
+			.header("Content-Type", "application/json")
+			.header("Cookie", "JSESSIONID=" + ReusableMethods.getUserSession())
+			.body(Payloads.issueBodyContent(projectKey, issueSummary, issueDescription, issueType))
+			.when()
+			.post(ResourcePaths.createIssueResourcePath)
+			.then().extract().response();
+		
+		JsonPath js = rawToJson(res);
+		String jiraIssueId = js.get("session.value");
+		return jiraIssueId;
+	}
 
 }

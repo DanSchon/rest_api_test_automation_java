@@ -22,4 +22,15 @@ public class Payloads {
 		+ "}";
 		return body;
 	}
+	
+	public static String commentBodyContent() {
+		String body = "{"
+				+ "'body':'lorem ipsum...',"
+					+ "'visibility': {"
+						+ "'type': 'role',"
+						+ "'value': 'Administrators'"
+					+ "}"
+				+ "}";
+		return body;
+	}
 }
